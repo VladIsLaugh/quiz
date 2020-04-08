@@ -5,9 +5,10 @@ import FinishedQuiz from "./../../components/FinishedQuiz/FinishedQuiz";
 
 class Quiz extends Component {
   state = {
-    isFinished: true,
+    isFinished: false,
     activeQuestion: 0,
     answerState: null,
+    answersResults:[],
     quiz: [
       {
         id: 1,
@@ -50,11 +51,15 @@ class Quiz extends Component {
       if (this.state.answerState[key] === "success") return;
     }
     let question = this.state.quiz[this.state.activeQuestion];
+    let answersResults = this.state.answersResults
+
     if (question.rightAnswerId === id) {
+      answersResults.push('success')
       this.setState({
         answerState: { [id]: "success" },
       });
     } else {
+      answersResults.push("error")
       this.setState({
         answerState: { [id]: "error" },
       });
@@ -65,6 +70,7 @@ class Quiz extends Component {
         this.setState({
           activeQuestion: this.state.activeQuestion + 1,
           answerState: null,
+          answersResults: answersResults
         });
 
         
@@ -84,6 +90,16 @@ class Quiz extends Component {
     return !(this.state.activeQuestion + 1 === this.state.quiz.length);
   };
 
+  retry =() =>{
+    this.setState({
+      isFinished: false,
+      activeQuestion: 0,
+      answerState: null,
+      answersResults:[]
+    })
+
+  }
+
   render() {
     return (
       <div className={classes.Quiz}>
@@ -91,7 +107,11 @@ class Quiz extends Component {
         <h1>Quiz</h1>
           {this.state.isFinished
           ?
-          <FinishedQuiz />
+          <FinishedQuiz 
+          answersResults={this.state.answersResults}
+          questions={this.state.quiz}
+          retry={this.retry}
+          />
         :         
         <ActiveQuiz
           question={this.state.quiz[this.state.activeQuestion].question}

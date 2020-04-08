@@ -1,28 +1,52 @@
 import React from "react";
 import classes from "./FinishedQuiz.module.css";
+import Button from './../UI/Button/Button'
 
 const FinishedQuiz = (props) => {
+
+  const countRightAnswers = () => {
+    return props.answersResults.reduce((total, item)=>{
+        if(item==='success')
+        total++
+          return total;
+    },0)
+
+  }
+
+  const cls = []
+
+  props.answersResults.map((item,index)=>{
+    return  item=='success'? cls.push(["fa fa-check "+ classes[item]]) :cls.push(["fa fa-times "+ classes[item]])
+  })
+
   return (
     <div className={classes.FinishedQuiz}>
       <ul>
-        <li>
-          <strong>1.</strong> Шото там <i className={"fa fa-check " + classes.success} />
-        </li>
-        <li>
-          <strong>2.</strong> Шото там <i className={"fa fa-times " + classes.error} />
-        </li>
-        <li>
-          <strong>3.</strong> Шото там <i className={"fa fa-times " + classes.error} />
-        </li>
-        <li>
-          <strong>4.</strong> Шото там <i className={"fa fa-check " + classes.success} />
-        </li>
+{
+  props.questions.map((item, index) =>{
+    return(<li key={index}>
+      <strong>{index + 1}.</strong> {item.question} <i  className={cls[index].join(' ')} />
+    </li>)
+  })
+}
+
+{/* {props.answersResults.map((item,index)=>{
+  return  (<li>
+  <strong>{index + 1}.</strong>  <i className={item=='success'?"fa fa-check "+ classes[item]: "fa fa-times "+ classes[item] } />
+</li>)
+})} */}
+
+
       </ul>
 
-      <p>правильних ответов 4 из 12</p>
+
+
+  <p>правильних ответов {countRightAnswers()} из {props.questions.length}</p>
 
       <div>
-        <button>На главную</button>
+      <Button onClick={props.retry} type="primary">Повторить</Button>
+      <Button  type="success">Перейти к списку тестов</Button>
+        
       </div>
     </div>
   );
