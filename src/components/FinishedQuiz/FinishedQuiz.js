@@ -16,7 +16,7 @@ const FinishedQuiz = (props) => {
   const cls = []
 
   props.answersResults.map((item,index)=>{
-    return  item=='success'? cls.push(["fa fa-check "+ classes[item]]) :cls.push(["fa fa-times "+ classes[item]])
+    return  item==='success'? cls.push(["fa fa-check "+ classes[item]]) :cls.push(["fa fa-times "+ classes[item]])
   })
 
   return (
