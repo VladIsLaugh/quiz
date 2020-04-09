@@ -12,35 +12,43 @@ class Quiz extends Component {
     quiz: [
       {
         id: 1,
-        question: "Какого цвета небо?",
+        question: "Who is the president of ukraine",
         rightAnswerId: 2,
         answers: [
-          { text: "Жовтий", id: 1 },
-          { text: "Синій", id: 2 },
-          { text: "Зелений", id: 3 },
-          { text: "Вопрос4", id: 4 },
+          { text: "Petro Poroshenko", id: 1 },
+          { text: "Volodymer Zelenskiy", id: 2 },
+          { text: "Genadiy Gorin", id: 3 },
+          { text: "Obama", id: 4 },
         ],
       },
       {
         id: 2,
-        question: "В каком городе основали русь",
+        question: "Коли народився Влад Віт",
         rightAnswerId: 3,
         answers: [
-          { text: "1700", id: 1 },
-          { text: "1702", id: 2 },
-          { text: "1703", id: 3 },
-          { text: "1705", id: 4 },
+          { text: "12 травня 1700р", id: 1 },
+          { text: "18 січня 1892р", id: 2 },
+          { text: "5 жовтня 1999", id: 3 },
+          { text: "вчора", id: 4 },
         ],
       },
       {
         id: 3,
-        question: "Какого цвета небо?",
+        question: "Як буде пісюн на англіській",
         rightAnswerId: 2,
         answers: [
-          { text: "Жовтий", id: 1 },
-          { text: "Синій", id: 2 },
-          { text: "Зелений", id: 3 },
-          { text: "Вопрос4", id: 4 },
+          { text: "Pisun", id: 1 },
+          { text: "Penis", id: 2 },
+          { text: "Eldak", id: 3 },
+        ],
+      },
+      {
+        id: 4,
+        question: "Останій вопрос",
+        rightAnswerId: 1,
+        answers: [
+          { text: "правильний отвєт", id: 1 },
+          { text: "неправильний отвєь", id: 2 },
         ],
       }
     ],
